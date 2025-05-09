@@ -2,13 +2,9 @@
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+// HELO KAK, UNTUK KODE YANG BERHUBUNGAN DENGAN KODINGAN SAYA MULAI DARI LINE 294 (keadaan ketika button submit dipencet)
 
 /**
- *
  * @author Alvin
  */
 public class DataMahasiswa extends javax.swing.JFrame {
@@ -296,6 +292,9 @@ public class DataMahasiswa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // pas mencet tombol submit
+        // menyiapkan variabel untuk ditampilkan
+        // mendapatkan tulisan yang ada di textfield terus masukkan ke variabel masing masing
         String nama = tfNama.getText();
         String tanggal = tfTanggalLahir.getText();
         String nomor = tfNomorPendaftaran.getText();
@@ -303,12 +302,16 @@ public class DataMahasiswa extends javax.swing.JFrame {
         String alamat = tfAlamat.getText();
         String email = tfEmail.getText();
         
+        // ngecek kalau misalnya ada yang belum diisi
         if (nama.isEmpty() || tanggal.isEmpty() || nomor.isEmpty() || telepon.isEmpty() || alamat.isEmpty() || email.isEmpty()){
+            
+            // kalau belum diisi bakal popup tab error dengan tulisan di bawah ini. Library untuk popup errornya namanya JOptionPane
             JOptionPane.showMessageDialog(this, "Tolong diisi semua ya :)", "Bro ada yang belum diisi", JOptionPane.ERROR_MESSAGE);
         } else {
-            DefaultTableModel model = (DefaultTableModel) tableMahasiswa.getModel();
-            model.addRow(new Object[] {nama, tanggal, nomor, telepon, alamat, email});
+            DefaultTableModel model = (DefaultTableModel) tableMahasiswa.getModel(); // ini kayak inisiasi tablenya (saya memposting datanya di table, ehehehe kasih poin plus kak)
+            model.addRow(new Object[] {nama, tanggal, nomor, telepon, alamat, email}); // ini bakal nambah baris di table dan masukin data sesuai kolom
             
+            // setelah pencet submit form pengisiannya diclear
             tfNama.setText("");
             tfTanggalLahir.setText("");
             tfNomorPendaftaran.setText("");
@@ -319,6 +322,7 @@ public class DataMahasiswa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // pas mencet tombol clear semua formnya dikosongin
         tfNama.setText("");
         tfTanggalLahir.setText("");
         tfNomorPendaftaran.setText("");
@@ -328,13 +332,16 @@ public class DataMahasiswa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        int row = tableMahasiswa.getSelectedRow();
+        // pas mencet tombol delete
+        int row = tableMahasiswa.getSelectedRow(); // sebelum mencet kita select dulu baris yang mau dihapus, trus diminta trus dijadikan int buat diotak atik
         
-        if (row < 0){
+        if (row < 0){ // kalau ndak milih bakal keluar popup error dengan tulisan dibawah ini
             JOptionPane.showMessageDialog(this, "Pilih mana yang mau dihapus dawg", "Error kocak", JOptionPane.ERROR_MESSAGE);
-        } else {
-            DefaultTableModel model = (DefaultTableModel) tableMahasiswa.getModel();
-            model.removeRow(row);
+        } else { // kalau mencet salah satu baris
+            DefaultTableModel model = (DefaultTableModel) tableMahasiswa.getModel(); // inisiasi tabel biar baris pilihannya bisa dihapus
+            model.removeRow(row); // hapus baris yang dipilih
+            
+            // end of kode penjelasan
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
