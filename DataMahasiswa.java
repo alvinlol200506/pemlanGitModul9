@@ -308,7 +308,9 @@ public class DataMahasiswa extends javax.swing.JFrame {
             // kalau belum diisi bakal popup tab error dengan tulisan di bawah ini. Library untuk popup errornya namanya JOptionPane
             JOptionPane.showMessageDialog(this, "Tolong diisi semua ya :)", "Bro ada yang belum diisi", JOptionPane.ERROR_MESSAGE);
         } else {
-            DefaultTableModel model = (DefaultTableModel) tableMahasiswa.getModel(); // ini kayak inisiasi tablenya (saya memposting datanya di table, ehehehe kasih poin plus kak)
+            int result = JOptionPane.showConfirmDialog(null, "Yakin sudah mengisi dengan benar?", "Attention", JOptionPane.OK_CANCEL_OPTION); // fitur "meyakinkan untuk submit" thingy
+            if (result == JOptionPane.OK_OPTION) { // kalau pilih OK pas popup
+               DefaultTableModel model = (DefaultTableModel) tableMahasiswa.getModel(); // ini kayak inisiasi tablenya (saya memposting datanya di table, ehehehe kasih poin plus kak)
             model.addRow(new Object[] {nama, tanggal, nomor, telepon, alamat, email}); // ini bakal nambah baris di table dan masukin data sesuai kolom
             
             // setelah pencet submit form pengisiannya diclear
@@ -318,6 +320,9 @@ public class DataMahasiswa extends javax.swing.JFrame {
             tfNoTelp.setText("");
             tfAlamat.setText("");
             tfEmail.setText("");
+            } else if (result == JOptionPane.CANCEL_OPTION) { // kalau pilih cancel pas popup bakal kembali ngisi
+            
+            }
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
